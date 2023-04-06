@@ -85,9 +85,9 @@ int main() {
         s.display();
         
     auto end = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+    auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-    cout << "Time taken : " << duration  << " nanoseconds" << endl;
+    cout << "Time taken : " << duration  << " microseconds" << endl;
 
     
     return 0;
