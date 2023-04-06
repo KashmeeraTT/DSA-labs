@@ -3,15 +3,17 @@
 using namespace std;
 using namespace std::chrono;
 
-#define MAX_SIZE 100
 
 class Stack {
 private:
-    int arr[MAX_SIZE];
+    int *arr;
+    int MAX_SIZE;
     int top;
 
 public:
-    Stack() {
+    Stack(int size) {
+        arr = new int[size];
+        MAX_SIZE = size;
         top = -1;
     }
 
@@ -65,7 +67,7 @@ int main() {
 
     auto start = chrono::high_resolution_clock::now();
 
-        Stack s;
+        Stack s(100);
         s.push(5);
         s.push(10);
         s.push(15);
@@ -85,13 +87,13 @@ int main() {
         s.pop();
         s.pop();
         cout << "Is the stack empty? " << s.isEmpty() << endl;
-        cout << "Is the stack full? " << s.isFull() << endl;
+        // cout << "Is the stack full? " << s.isFull() << endl;
         s.display();
         
     auto end = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+    auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
 
-    cout << "Time taken : " << duration  << " nanoseconds" << endl;
+    cout << "Time taken : " << duration  << " microseconds" << endl;
 
     
     return 0;
