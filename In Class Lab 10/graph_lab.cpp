@@ -13,28 +13,30 @@ struct Node{
 
 struct Graph{
     //graph will have an array of type "node" with length specified by n
-    int n=8;
+    int n=9;
     Node * nodes = new Node[n];
 
     void intializenodes(){
         //iterate through the nodes and assign labels
         for(int i=0;i<n;i++){
-            nodes[i].label=i+1;
+            nodes[i].label=i;
         }
     }
 
     void addedge(int u, int v){
         //select node u and push v into u's neighbour
-        nodes[u-1].neighbours.push_back(v);
+        nodes[u].neighbours.push_back(v);
 
         //select node v and push u into v's neighbour
-        nodes[v-1].neighbours.push_back(u);
+        nodes[v].neighbours.push_back(u);
     }
 
     void print(){
         //lets iterate through each node and print its neighbours
         for (int i=0;i<n;i++){
-            cout << nodes[i].label << " -> ";
+            if (!nodes[i].neighbours.empty()){
+                cout << nodes[i].label << " -> ";
+            }
             int count = 0; // Track the number of printed neighbors
 
             for (int neighbor : nodes[i].neighbours) {
