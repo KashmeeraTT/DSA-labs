@@ -44,11 +44,19 @@ void dijkstra(vector<vector<int>>& G, int n, int u) {
     for (int i = 0; i < n; i++) {
         cout << "Time taken from " << u << " to " << i << " =\t" << traveltime[i] << "\n";
     }
+
+    // Print the average travel time from the source vertex
+    int totalTime = 0;
+    for (int i = 0; i < n; i++) {
+        totalTime += traveltime[i];
+    }
+    double average = double(totalTime)/5;
+    cout << "Average travel time from city " << u << " is =\t" << average;
 }
 
 int main() {
     int n = 6;  // Number of vertices
-    int u = 0;  // Starting vertex
+    int u = 5;  // Starting vertex
     
     // Create a weighted adjacency matrix
     vector<vector<int>> G = {
